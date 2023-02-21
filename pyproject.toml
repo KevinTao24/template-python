@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "template-python"
+version = "0.1.0"
+description = ""
+authors = ["Bryant Tao <minzetao@gmail.com>"]
+readme = "README.md"
+packages = [{include = "template_python"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+sanic = "^22.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
