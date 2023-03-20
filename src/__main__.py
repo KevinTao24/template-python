@@ -4,6 +4,7 @@ import sys
 sys.path.insert(-1, os.getcwd())
 
 from sanic import Sanic
+from sanic_ext import Extend
 
 from src.apis.nlu.nlu_blueprint import nlu_blueprint
 from src.apis.vision.vision_blueprint import vision_blueprint
@@ -13,17 +14,19 @@ app = Sanic(__name__)
 app.blueprint(nlu_blueprint)
 app.blueprint(vision_blueprint)
 
+Extend(app)
+
 logger = setup_logger("main", log_file="template.log")
 
 
 @app.middleware("request")
 async def log_request(request):
-    logger.info(f"Request: {request.method} {request.path}")
+    logger.info(f"Request: {request.ip} {request.method} {request.path}")
 
 
 @app.middleware("response")
 async def log_response(request, response):
-    logger.info(f"Response: {response.status}")
+    logger.info(f"Response: {response.status} {len(response.body)}")
 
 
 if __name__ == "__main__":

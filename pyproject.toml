@@ -10,8 +10,8 @@ packages = [{include = "template_python"}]
 python = "^3.8"
 sanic = "^22.12.0"
 black = "^23.1.0"
-jsonschema = "^4.17.3"
 isort = "^5.12.0"
+sanic-ext = "^22.12.0"
 
 
 [build-system]

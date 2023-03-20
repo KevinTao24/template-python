@@ -1,12 +1,10 @@
-USER = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "properties": {
-        "senderId": {"type": "string"},
-        "name": {"type": "string"},
-        "email": {"type": "string", "format": "email"},
-        "age": {"type": "integer"},
-    },
-    "required": ["name", "email", "age"],
-    "additionalProperties": False,
-}
+from dataclasses import dataclass
+from typing import Optional, Text
+
+
+@dataclass
+class TestBody:
+    senderId: Text
+    name: Text
+    email: Optional[Text]
+    age: int = 24

@@ -12,7 +12,9 @@ def setup_logger(name=None, log_level=logging.INFO, log_file=None):
     )
 
     if log_file:
-        file_handler = RotatingFileHandler(log_file, maxBytes=100 * 1024 * 1024, backupCount=sys.maxsize)
+        file_handler = RotatingFileHandler(
+            log_file, maxBytes=100 * 1024 * 1024, backupCount=sys.maxsize
+        )
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
 
