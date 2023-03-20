@@ -1,13 +1,13 @@
 from sanic import Blueprint
 from sanic.response import json
 
-from src.apis.schemas.nlu import USER
+from src.apis.nlu.nlu_schema import USER
 from src.shared.utils.validators import validate_params
 
-vision_blueprint = Blueprint("vision_blueprint", url_prefix="/api/v1/vision")
+nlu_blueprint = Blueprint("nlu_blueprint", url_prefix="/api/v1/nlu")
 
 
-@vision_blueprint.route("/test", methods=["POST"])
+@nlu_blueprint.route("/test", methods=["POST"])
 @validate_params(USER)
 async def test(request):
     data = request.json
