@@ -4,6 +4,7 @@ import sys
 sys.path.insert(-1, os.getcwd())
 
 from sanic import Sanic
+from sanic.response import json
 from sanic_ext import Extend
 
 from src.apis.nlu.nlu_blueprint import nlu_blueprint
@@ -17,6 +18,11 @@ app.blueprint(vision_blueprint)
 Extend(app)
 
 logger = setup_logger("main", log_file="template.log")
+
+
+@app.route("/health", methods=["GET"])
+async def health_check(request):
+    return json({"status": "OK"})
 
 
 @app.middleware("request")
