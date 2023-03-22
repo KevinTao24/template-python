@@ -9,6 +9,7 @@ from sanic_ext import Extend
 
 from src.apis.nlu.nlu_blueprint import nlu_blueprint
 from src.apis.vision.vision_blueprint import vision_blueprint
+from src.core.nlu.tokenizers.jieba_tokenizer import JiebaTokenizer
 from src.shared.utils.logger import setup_logger
 
 app = Sanic(__name__)
@@ -19,10 +20,15 @@ Extend(app)
 
 logger = setup_logger("main", log_file="template.log")
 
+tokenizer = JiebaTokenizer()
+
 
 @app.route("/health", methods=["GET"])
 async def health_check(request):
-    return json({"status": "OK"})
+    result = {}
+    tokens = tokenizer.process("江苏省南京市高淳区")
+    result["text_tokens"] = [token.to_dict() for token in tokens]
+    return json(result)
 
 
 @app.middleware("request")
