@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Test files
+tests/
+
+# Git files
+.git/
+.gitignore
+
+# Virtual environment
+venv/

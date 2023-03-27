@@ -17,6 +17,7 @@ diffusers = "^0.14.0"
 accelerate = "^0.17.1"
 transformers = "^4.27.2"
 jieba = "^0.42.1"
+datasets = "^2.10.1"
 
 
 [build-system]
